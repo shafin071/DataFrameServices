@@ -23,7 +23,7 @@ Pip install: ```pip install -i https://test.pypi.org/simple/ dfs```
 - Pandas
 
 ### Licence
-- [licence.txt](https://github.com/shafin071/DataFrameServices/blob/master/dfs_parent/dfs/license.txt)
+- [licence.txt](https://github.com/shafin071/DataFrameServices/blob/master/dfs/license.txt)
 
 ### What's next?
 More dataframe functionalities will be added  
