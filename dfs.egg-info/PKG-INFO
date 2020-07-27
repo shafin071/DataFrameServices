@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: dfs
+Version: 1.1.2
+Summary: DataFrame Services built on top of Pandas and Numpy
+Home-page: UNKNOWN
+Author: Shafin M
+Author-email: shafinmohammed071@gmail.com
+License: UNKNOWN
+Description: # DFS: DataFrame Services
+        
+        More details to come
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
