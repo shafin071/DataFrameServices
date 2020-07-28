@@ -10,7 +10,7 @@ with open(path.join(setup_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(name='dfs',
-      version='1.1.3',
+      version='1.1.6',
       author="Shafin M",
       author_email="shafinmohammed071@gmail.com",
       description='DataFrame Services built on top of Pandas and Numpy',

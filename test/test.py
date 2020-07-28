@@ -1,8 +1,7 @@
 import unittest
 import pandas as pd
 import numpy as np
-from ..dfs.dataframe_services import DataFrameServices
-
+from dfs import DataFrameServices
 
 
 class TestDataFrameServices(unittest.TestCase):
@@ -73,7 +72,7 @@ class TestDataFrameServices(unittest.TestCase):
         self.assertEqual(self.data.df['price'].dtypes, 'float64', '\ntest_reduce_mem_usage before 1: dtype did not match')
         self.assertEqual(self.data.df['stroke'].dtypes, 'float64', '\ntest_reduce_mem_usage before 2: dtype did not match')
         self.assertEqual(self.data.df['engine-size'].dtypes, 'int64', '\ntest_reduce_mem_usage after 3: dtype did not match')
-        self.data.reduce_memory_usage(verbose=False)
+        self.data.reduce_memory_usage(verbose=True)
 
         # After mem reduction:
         self.assertEqual(self.data.df['price'].dtypes, 'float16', '\ntest_reduce_mem_usage after 1: dtype did not match')

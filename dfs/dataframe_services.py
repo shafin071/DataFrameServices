@@ -28,11 +28,12 @@ class DataFrameServices():
         Returns:
             True / False (Bool)
         '''
+        print(filepath)
         return os.path.exists(filepath)
 
 
 
-    def load_data(self, filepath, sep=',', delimiter=None, header='infer', index_col=None, sheet_name=0):
+    def load_data(self, filepath, delimiter=',', header='infer', index_col=None, sheet_name=0):
         '''
         Loads data from excel, csv, tsv, or txt file
 
@@ -62,13 +63,13 @@ class DataFrameServices():
                 self.df = pd.read_excel(filepath, header=header,  sheet_name=sheet_name )
 
             elif file_extension == file_extensions['csv_extension']:
-                self.df = pd.read_csv(filepath,  sep=sep, header=header, index_col= index_col, delimiter=delimiter)
+                self.df = pd.read_csv(filepath, delimiter=delimiter, header=header, index_col= index_col)
 
             elif file_extension == file_extensions['tsv_extension']:
-                self.df = pd.read_csv(filepath, sep='\t', header=header, index_col= index_col, delimiter=delimiter)
+                self.df = pd.read_csv(filepath, delimiter='\t', header=header, index_col= index_col)
 
             elif file_extension == file_extensions['textfile_extension']:
-                self.df = pd.read_csv(filepath, sep=" ", header=header, index_col= index_col, delimiter=delimiter)
+                self.df = pd.read_csv(filepath, delimiter=" ", header=header, index_col= index_col)
 
             elif file_extension == file_extensions['pickle_extension']:
                 self.df = pd.read_pickle(filepath)
@@ -83,10 +84,10 @@ class DataFrameServices():
 
     def change_dtype(self, cols, from_dtype, to_dtype):
         '''
-        Change ALL columns data type to preferred to_dtype
+        Change ALL columns data type stated in cols to preferred to_dtype
         Best used for changing Object type data to either int or float
         Args:
-            - cols (list): list of df columns
+            - cols (list of str): list of df columns
             - from_dtype (str): Pandas data type ['int64', 'float64', 'object', 'bool', 'datetime64', 'timedelta[ns]', 'category']
             - to_dtype (str): Python data type ['int16', 'int32', 'int64', 'float16', 'float32', 'float64', 'str', 'bool']
         Returns: None
@@ -128,7 +129,6 @@ class DataFrameServices():
         df = self.df
 
         start_mem = df.memory_usage().sum() / 1024 ** 2
-        print("start_mem:", start_mem)
 
         for col in df.columns:
             col_type = df[col].dtypes
@@ -156,10 +156,9 @@ class DataFrameServices():
                         df[col] = df[col].astype(np.float64)
 
         end_mem = df.memory_usage().sum() / 1024 ** 2
-        print("end_mem:", end_mem)
 
         if verbose:
-            print('Mem. usage decreased to {:5.2f} Mb ({:.1f}% reduction)'.format(end_mem, 100 * (start_mem - end_mem) / start_mem))
+            print('Memory usage of dataframe reduced from {:5.2f} Mb to {:5.2f} Mb ({:.1f}% reduction)'.format(start_mem, end_mem, 100 * (start_mem - end_mem) / start_mem))
 
         self.df = df
 

@@ -1,3 +1,4 @@
+README.md
 setup.py
 dfs/__init__.py
 dfs/dataframe_services.py
@@ -7,3 +8,4 @@ dfs.egg-info/dependency_links.txt
 dfs.egg-info/not-zip-safe
 dfs.egg-info/requires.txt
 dfs.egg-info/top_level.txt
+test/test.py
